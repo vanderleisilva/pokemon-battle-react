@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
-import selection from './selection/selection'
-import end from './end/end'
-import battle from './battle/battle'
+import selection from './pages/selection'
+import end from './pages/end'
+import battle from './pages/battle'
 
 // import './App.css';
 
