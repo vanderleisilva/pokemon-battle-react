@@ -8,12 +8,19 @@ import FakePlayers from '../../constants/dummy-data/players';
 
 configure({ adapter: new Adapter() });
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<PlayerList players={FakePlayers} />, div);
-});
+describe('Render Component',() => {
+    let wrapper
 
-it('should render a list of thumbs for each players', () => {
-	const wrapper = shallow(<PlayerList players={FakePlayers}/>);
-  	expect(wrapper.find('.thumbnail').length).toEqual(FakePlayers.length);
+    beforeEach(() => {
+        wrapper = shallow(<PlayerList players={FakePlayers} onSelect={() => {}} />)
+    })
+
+    it('renders without crashing', () => {
+		expect(wrapper.length).toEqual(1);
+	});
+
+    it('should render a list of thumbs for each players', () => {
+       expect(wrapper.find('.thumbnail').length).toEqual(FakePlayers.length);
+    });
+    
 });

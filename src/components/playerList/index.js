@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import {playerType} from '../../constants/custom-prop-types';
 
 class PlayerList extends React.Component {
 
@@ -15,7 +16,8 @@ class PlayerList extends React.Component {
 }
 
 PlayerList.propTypes = {
-  players: PropTypes.array.isRequired
+  players: PropTypes.arrayOf(playerType).isRequired,
+  onSelect: PropTypes.func.isRequired
 };
 
 export default PlayerList;
