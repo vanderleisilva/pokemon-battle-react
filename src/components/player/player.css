@@ -19,9 +19,6 @@ img{
 .title{
 	padding:0 9px; 
 }
-.thumbnail{
-	cursor: pointer;
-}
 .thumbnail:hover{
 	border-color: #bce8f1; 
 	background-color: #d9edf7;

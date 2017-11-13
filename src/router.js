@@ -4,9 +4,6 @@ import selection from './pages/selection'
 import end from './pages/end'
 import battle from './pages/battle'
 
-// import './App.css';
-
-
 class Router extends Component {
   render() {
     return (
@@ -14,7 +11,7 @@ class Router extends Component {
       	<Switch>
 	      <Route exact path='/' component={selection}/>
 	      <Route path='/end' component={end}/>
-	      <Route path='/battle' component={battle}/>
+	      <Route path='/battle/:player' component={battle}/>
 	  	</Switch>
       </div>	
     );

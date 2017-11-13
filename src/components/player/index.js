@@ -1,14 +1,16 @@
 import React from "react";
 import {playerType} from '../../constants/custom-prop-types';
 import {apiUrl} from '../../constants/api';
+import PropTypes from 'prop-types';
 
 import './player.css';
 
-class Player extends React.Component {
+class Player extends React.Component { 
 
 	render() {
+
     const attacks = this.props.player.attacks.map((attack, index) => (
-      <li className="list-group-item">
+      <li key={index} className="list-group-item">
         <span className="attack-name">{attack.name}:</span>
         <span title="Type" className="label label-default">{attack.type}</span>
         <span className="label label-danger">Power: {attack.power}</span>
@@ -39,7 +41,7 @@ class Player extends React.Component {
 }
 
 Player.propTypes = {
-  player: playerType.isRequired,
+  player: playerType.isRequired
 };
 
 export default Player;
