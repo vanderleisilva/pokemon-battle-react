@@ -1,15 +1,16 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import Player from '../player';
 import {playerType} from '../../constants/custom-prop-types';
 
 class PlayerList extends React.Component {
 
 	render() {
 		const items = this.props.players.map((player, index) =>
-            <div key={index} className="col-md-3">
-            	<div className="thumbnail"></div>
-            </div>
-        );
+        <div key={index} className="col-md-3">
+          <Player player={player} />
+        </div>
+    );
 
 		return <div>{items}</div>;
 	}

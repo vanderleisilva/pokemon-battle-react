@@ -20,7 +20,7 @@ describe('Render Component',() => {
 	});
 
     it('should render a list of thumbs for each players', () => {
-       expect(wrapper.find('.thumbnail').length).toEqual(FakePlayers.length);
+       expect(wrapper.find('.col-md-3').length).toEqual(FakePlayers.length);
     });
     
 });
