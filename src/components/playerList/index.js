@@ -4,10 +4,13 @@ import PropTypes from 'prop-types';
 class PlayerList extends React.Component {
 
 	render() {
-		return(
-			<div>
-	        </div>
-		);
+		const items = this.props.players.map((player, index) =>
+            <div key={index} className="col-md-3">
+            	<div className="thumbnail"></div>
+            </div>
+        );
+
+		return <div>{items}</div>;
 	}
 }
 
