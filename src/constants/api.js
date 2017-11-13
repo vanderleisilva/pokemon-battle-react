@@ -1,0 +1,1 @@
+export const apiUrl = 'https://pokemon-battle-lumen.herokuapp.com';

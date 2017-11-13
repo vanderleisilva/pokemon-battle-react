@@ -1,9 +1,21 @@
 import React from "react";
 import {playerType} from '../../constants/custom-prop-types';
+import {apiUrl} from '../../constants/api';
+
+import './player.css';
 
 class Player extends React.Component {
 
 	render() {
+    const attacks = this.props.player.attacks.map((attack, index) => (
+      <li className="list-group-item">
+        <span className="attack-name">{attack.name}:</span>
+        <span title="Type" className="label label-default">{attack.type}</span>
+        <span className="label label-danger">Power: {attack.power}</span>
+        <span title="Accuracy" className="label label-warning">Acc.: {attack.accuracy}</span>
+      </li>
+    ));
+
 		return (
     <div>
        <div className="thumbnail">
@@ -16,9 +28,10 @@ class Player extends React.Component {
              </p>
           </div>
           <div className="container-image">
-             <img src="apiUrl+player.avatar" />
+             <img src={apiUrl+this.props.player.avatar} alt="player avatar" />
           </div>
           <div className="caption">
+            <ul title="Attacks" className="list-group">{attacks}</ul>
           </div>
        </div>
     </div>);
