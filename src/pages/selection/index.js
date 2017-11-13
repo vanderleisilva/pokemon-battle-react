@@ -1,15 +1,16 @@
 import React from "react";
 import PlayerList from '../../components/playerList'
+import FakePlayers from '../../constants/dummy-data/players'
 
 class Selection extends React.Component {
 
 	render() {
 		return(
 			<div>
-	            <div class="page-header">
-                  <h1>Meu carrinho <small>produtos selecionados para compra</small></h1>
+	            <div className="page-header">
+                  <h1>Pokémon Battle <small>select your Pokémon</small></h1>
                 </div>
-                <PlayerList />
+                <PlayerList players={FakePlayers} />
 	        </div>
 		);
 	}
