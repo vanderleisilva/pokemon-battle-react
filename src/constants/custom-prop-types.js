@@ -17,3 +17,10 @@ export const playerType = PropTypes.shape({
 	defense: PropTypes.number.isRequired,
 	attacks: PropTypes.arrayOf(attackType).isRequired
 });
+
+export const actionType = PropTypes.shape({
+	attack: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	damage: PropTypes.number.isRequired,
+	desc: PropTypes.string
+});

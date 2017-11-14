@@ -1,8 +1,10 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {playerType} from '../../constants/custom-prop-types';
 import {apiUrl} from '../../constants/api';
 import Attacks from './attacks';
 import Life from './life';
+import Actions from './actions';
 
 import './player.css';
 
@@ -15,7 +17,7 @@ class Player extends React.Component {
        <div className="thumbnail">
           <div className="title">
              <h3>{this.props.player.name}</h3>
-             <Life />
+             {this.props.isFighting ? (<Life />) : null}
              <p>
                 <span className="label label-primary">Health: {this.props.player.health}</span>
                 <span className="label label-success">Agility: {this.props.player.agility}</span>
@@ -25,14 +27,21 @@ class Player extends React.Component {
           <div className="container-image">
              <img src={apiUrl+this.props.player.avatar} alt="player avatar" />
           </div>
-          <Attacks attacks={this.props.player.attacks} />
+          <Attacks enable={this.props.isFighting} attacks={this.props.player.attacks} />
        </div>
+       {this.props.isFighting ? (<Actions />) : null}
     </div>);
 	}
 }
 
 Player.propTypes = {
-  player: playerType.isRequired
+  player: playerType.isRequired,
+  isFighting: PropTypes.bool
 };
+
+Player.defaultProps = {
+  isFighting: false
+};
+
 
 export default Player;
