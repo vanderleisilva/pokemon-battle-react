@@ -1,7 +1,6 @@
 import React from "react";
 import {playerType} from '../../constants/custom-prop-types';
 import {apiUrl} from '../../constants/api';
-import PropTypes from 'prop-types';
 
 import './player.css';
 
@@ -16,7 +15,7 @@ class Player extends React.Component {
         <span className="label label-danger">Power: {attack.power}</span>
         <span title="Accuracy" className="label label-warning">Acc.: {attack.accuracy}</span>
       </li>
-    ));
+    )) || [];
 
 		return (
     <div>
