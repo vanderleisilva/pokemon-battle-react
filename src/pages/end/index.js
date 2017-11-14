@@ -1,7 +1,17 @@
-import React from 'react'
+import React from "react";
+import Header from '../../components/header'
 
-export default () => (
-  <p>
-  	End component
-  </p>
-)
+class End extends React.Component {
+
+	render() {
+		return(
+			<div>
+				<Header>
+					<small>End component</small>
+				</Header>
+	        </div>
+		);
+	}
+}
+
+export default End;
