@@ -12,12 +12,12 @@ class PlayerFight extends React.Component {
 			<div className="row">
 			    <div className="col-xs-6">
 				    <div className="player">
-				    	<Player player={this.props.player} />
+				    	<Player player={this.props.player} isFighting={true} isCpu={false} />
 				    </div>
 			    </div>
 			    <div className="col-xs-6">
 				    <div className="player">
-				    	<Player player={this.props.against} />
+				    	<Player player={this.props.against} isFighting={true} />
 				    </div>
 			    </div>
 			</div>

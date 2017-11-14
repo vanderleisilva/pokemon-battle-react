@@ -27,7 +27,7 @@ class Player extends React.Component {
           <div className="container-image">
              <img src={apiUrl+this.props.player.avatar} alt="player avatar" />
           </div>
-          <Attacks enable={this.props.isFighting} attacks={this.props.player.attacks} />
+          <Attacks enabled={this.props.isFighting && !this.props.isCpu} attacks={this.props.player.attacks} />
        </div>
        {this.props.isFighting ? (<Actions />) : null}
     </div>);
@@ -36,11 +36,13 @@ class Player extends React.Component {
 
 Player.propTypes = {
   player: playerType.isRequired,
-  isFighting: PropTypes.bool
+  isFighting: PropTypes.bool,
+  isCpu: PropTypes.bool,
 };
 
 Player.defaultProps = {
-  isFighting: false
+  isFighting: false,
+  isCpu: true
 };
 
 
