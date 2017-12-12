@@ -1,8 +1,9 @@
 import React from "react";
 import Player from '../player';
-import {playerType} from '../../constants/custom-prop-types';
-
+import {connect} from 'react-redux';
 import './playerFight.css';
+
+const mapStateToProps = (state) => ({ battle: state.battle });
 
 class PlayerFight extends React.Component {
 
@@ -12,12 +13,12 @@ class PlayerFight extends React.Component {
 			<div className="row">
 			    <div className="col-xs-6">
 				    <div className="player">
-				    	<Player player={this.props.player} isFighting={true} isCpu={false} />
+				    	{this.props.battle.player ? <Player player={this.props.battle.player} isFighting={true} isCpu={false} /> : '' }
 				    </div>
 			    </div>
 			    <div className="col-xs-6">
 				    <div className="player">
-				    	<Player player={this.props.against} isFighting={true} />
+				    	{this.props.battle.against ? <Player player={this.props.battle.against} isFighting={true} /> : '' }
 				    </div>
 			    </div>
 			</div>
@@ -25,9 +26,4 @@ class PlayerFight extends React.Component {
 	}
 }
 
-PlayerFight.propTypes = {
-  player: playerType.isRequired,
-  against: playerType.isRequired
-};
-
-export default PlayerFight;
+export default connect(mapStateToProps)(PlayerFight);

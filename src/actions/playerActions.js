@@ -1,7 +1,7 @@
-export const addInputs = (output) => {
+export const battle = (battle) => {
     return {
-        type: "ADD_INPUTS",
-        output 
+        type: "BATTLE_START",
+        battle 
     }
 }
 
