@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Player from '../player';
-import {playerType} from '../../constants/custom-prop-types';
 import { Link } from 'react-router-dom';
+
+import {connect} from 'react-redux';
+
+const mapStateToProps = (state) => ({ players: state.players });
 
 class PlayerList extends React.Component {
 
@@ -17,8 +20,4 @@ class PlayerList extends React.Component {
 	}
 }
 
-PlayerList.propTypes = {
-  players: PropTypes.arrayOf(playerType).isRequired
-};
-
-export default PlayerList;
+export default connect(mapStateToProps)(PlayerList)

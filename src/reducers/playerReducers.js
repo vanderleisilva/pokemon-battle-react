@@ -1,12 +1,16 @@
-const initialState = {output:0}
+import FakePlayers from '../constants/dummy-data/players'
 
-const playerReducers = (state=initialState,action) => {
+const initialState = { players: FakePlayers }
+
+const playerReducers = (state=initialState, action) => {
     switch (action.type){
         case 'ADD_INPUTS': 
             return {...state,output:action.output}
-        case 'SUBTRACT_INPUTS':
-            return {...state,output:action.output}
-        default: return {...state}
+        case 'ADD_PLAYER':
+        	let players = state.players.concat(action.player);
+            return {...state, players} 
+        default: 
+        	return {...state}
 
     }
 }

@@ -5,9 +5,9 @@ export const addInputs = (output) => {
     }
 }
 
-export const subtractInputs = (output) => {
+export const addPlayer = (player) => {
     return {
-        type: "SUBTRACT_INPUTS",
-        output 
+        type: "ADD_PLAYER",
+        player
     }
 }
