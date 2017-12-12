@@ -14,7 +14,11 @@ import './index.css';
 import Router from './router';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(playerReducers, applyMiddleware(logger))
+const store = createStore(
+	playerReducers,/* preloadedState, */
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+	applyMiddleware(logger)
+)
 
 ReactDOM.render((
 	<Provider store={store}>

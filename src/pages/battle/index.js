@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({ battle: state.battle });
 class Battle extends React.Component {
 
 	componentDidMount() {
-		this.props.dispatch(battle({ player: FakePlayers[0], against: FakePlayers[1] }));
+		this.props.dispatch(battle({ player: FakePlayers[0], against: FakePlayers[1], started: true }));
   	}
 
 	render() {

@@ -1,13 +1,5 @@
-export const battle = (battle) => {
-    return {
-        type: "BATTLE_START",
-        battle 
-    }
-}
+export const battle = (battle) => ({ type: "BATTLE_START", battle })
 
-export const addPlayer = (player) => {
-    return {
-        type: "ADD_PLAYER",
-        player
-    }
-}
+export const endBattle = () => ({ type: "BATTLE_END" })
+
+export const addPlayer = (player) => ({ type: "ADD_PLAYER", player })
