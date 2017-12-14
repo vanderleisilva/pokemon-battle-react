@@ -11,7 +11,7 @@ class Router extends Component {
       	<Switch>
 	      <Route exact path='/' component={selection}/>
 	      <Route path='/end' component={end}/>
-	      <Route path='/battle/:player' component={battle}/>
+	      <Route path='/battle/:name' component={battle}/>
 	  	</Switch>
       </div>	
     );

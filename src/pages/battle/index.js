@@ -1,23 +1,28 @@
 import React from "react";
-import Header from '../../components/header'
-import PlayerFight from '../../components/playerFight'
-import FakePlayers from '../../constants/dummy-data/players';
+import Header from 'components/header'
+import PlayerFight from 'components/playerFight'
+import {request} from 'constants/api';
+import FakePlayers from 'constants/dummy-data/players';
 import {connect} from 'react-redux';
-import {battle} from '../../actions/playerActions'
+import {battle} from 'actions/playerActions'
 
-const mapStateToProps = (state) => ({ battle: state.battle });
+const mapStateToProps = (state, ownProps) => ({ battle: state.battle, selected: ownProps.match.params });
 
 class Battle extends React.Component {
 
 	componentDidMount() {
-		this.props.dispatch(battle({ player: FakePlayers[0], against: FakePlayers[1], started: true }));
+		request.post('select', this.props.selected).then(response => { 
+			this.props.dispatch(battle({ player: response.data.player, against: response.data.against, started: true }));
+		})
   	}
 
 	render() {
+		const player = this.props.battle.player ? this.props.battle.player.name : ''; 
+		const against = this.props.battle.against ? this.props.battle.against.name : ''; 
 		return(
 			<div>
 				<Header>
-					<small>poke1</small> X <small>poke2</small>
+					<small>{player}</small> X <small>{against}</small>
 				</Header>
 				<PlayerFight />
 	        </div>

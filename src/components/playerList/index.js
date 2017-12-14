@@ -12,7 +12,7 @@ class PlayerList extends React.Component {
 	componentDidMount() {
 		if (this.props.players.length > 0) { return; }
 		
-		request.get('all').then(response => { response.data.forEach(i => this.props.dispatch(addPlayer(i))) })
+		request.get('all').then(response => response.data.forEach(i => this.props.dispatch(addPlayer(i))))
   	}
 
 	render() {
