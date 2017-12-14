@@ -1,9 +1,9 @@
 import React from "react";
-import Player from '../player';
+import Player from 'components/player';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-import FakePlayers from '../../constants/dummy-data/players'
-import {addPlayer} from '../../actions/playerActions'
+import FakePlayers from 'constants/dummy-data/players'
+import {addPlayer} from 'actions/playerActions'
 
 const mapStateToProps = (state) => ({ players: state.players });
 

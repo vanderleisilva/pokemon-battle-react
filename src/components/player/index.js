@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {playerType} from '../../constants/custom-prop-types';
-import {apiUrl} from '../../constants/api';
+import {baseURL} from '../../constants/api';
 import Attacks from './attacks';
 import Life from './life';
 import Actions from './actions';
@@ -25,7 +25,7 @@ class Player extends React.Component {
              </p>
           </div>
           <div className="container-image">
-             <img src={apiUrl+this.props.player.avatar} alt="player avatar" />
+             <img src={baseURL+this.props.player.avatar} alt="player avatar" />
           </div>
           <Attacks enabled={this.props.isFighting && !this.props.isCpu} attacks={this.props.player.attacks} />
        </div>
