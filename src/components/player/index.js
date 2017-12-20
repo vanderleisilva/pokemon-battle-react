@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {playerType} from 'constants/custom-prop-types';
 import {baseURL} from 'constants/api';
-import Attacks from './attacks';
-import Life from './life';
-import Actions from './actions';
+import Attacks from 'components/attacks';
+import Life from 'components/life';
+import Actions from 'components/actions';
 
 import './player.css';
 
@@ -17,7 +17,7 @@ class Player extends React.Component {
        <div className="thumbnail">
           <div className="title">
              <h3>{this.props.player.name}</h3>
-             {this.props.isFighting ? (<Life />) : null}
+             <Life isCpu={this.props.isCpu} />
              <p>
                 <span className="label label-primary">Health: {this.props.player.health}</span>
                 <span className="label label-success">Agility: {this.props.player.agility}</span>
@@ -27,23 +27,16 @@ class Player extends React.Component {
           <div className="container-image">
              <img src={baseURL+this.props.player.avatar} alt="player avatar" />
           </div>
-          <Attacks enabled={this.props.isFighting && !this.props.isCpu} attacks={this.props.player.attacks} />
+          <Attacks isCpu={this.props.isCpu} />
        </div>
-       {this.props.isFighting ? (<Actions />) : null}
+       <Actions isCpu={this.props.isCpu} />
     </div>);
 	}
 }
 
 Player.propTypes = {
   player: playerType.isRequired,
-  isFighting: PropTypes.bool,
-  isCpu: PropTypes.bool,
+  isCpu: PropTypes.bool.isRequired,
 };
-
-Player.defaultProps = {
-  isFighting: false,
-  isCpu: true
-};
-
 
 export default Player;

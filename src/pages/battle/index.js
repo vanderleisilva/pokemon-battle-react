@@ -2,7 +2,6 @@ import React from "react";
 import Header from 'components/header'
 import PlayerFight from 'components/playerFight'
 import {request} from 'constants/api';
-import FakePlayers from 'constants/dummy-data/players';
 import {connect} from 'react-redux';
 import {battle} from 'actions/playerActions'
 

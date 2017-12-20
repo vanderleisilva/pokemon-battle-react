@@ -1,11 +1,19 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import {actionType} from '../../../constants/custom-prop-types';
+import {connect} from 'react-redux';
+
+const mapStateToProps = (state) => ({ battle: state.battle });
 
 class Actions extends React.Component { 
 
 	render() {
-	    const actions = this.props.actions.map((item, index) => (
+		let battle = this.props.battle;
+
+		if (!battle.started) { return false; }
+
+		let items = this.props.isCpu ? battle.against.status.actions : battle.player.status.actions;
+
+	    const actions = items.map((item, index) => (
 	    	<p key={index}> 
 		    	{item.name} attacked with <span className="label label-primary">{item.attack}</span><br/>
 		    	damage caused: <span className="label label-danger">{item.damage}</span>
@@ -21,11 +29,7 @@ class Actions extends React.Component {
 }
 
 Actions.propTypes = {
-  actions: PropTypes.arrayOf(actionType)
+  isCpu: PropTypes.bool.isRequired
 };
 
-Actions.defaultProps = {
-  actions: []
-};
-
-export default Actions;
+export default connect(mapStateToProps)(Actions);
