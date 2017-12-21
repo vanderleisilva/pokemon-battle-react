@@ -26,7 +26,7 @@ class Actions extends React.Component {
 
 	    return(<div className="panel panel-info">
 		  <div className="panel-heading">Actions</div>
-		  <div className="panel-body">{actions}</div>
+		  <div className="panel-body" style={{height: '150px',overflow: 'auto'}} >{actions}</div>
 		</div>)
 	}
 }

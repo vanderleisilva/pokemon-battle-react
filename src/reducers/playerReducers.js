@@ -17,15 +17,35 @@ const playerReducers = (state=initialState, action) => {
         	let players = state.players.concat(action.player);
             return {...newState, players} 
         case 'PLAYER_HIT':
-            battle = {...newState.battle};
-            battle.player.currentHealth -= action.hit.damage;
-            battle.player.actions = [action.hit, ...battle.player.actions];
-            return {...newState, battle};
+            return {
+                ...newState, 
+                battle: {
+                    ...newState.battle,
+                    player: {
+                       ...newState.battle.player,
+                       actions: [action.hit, ...newState.battle.player.actions]                       
+                    },
+                    against: {
+                        ...newState.battle.against,
+                        currentHealth: newState.battle.against.currentHealth - action.hit.damage
+                    }
+                }
+            };
         case 'CPU_HIT':
-            battle = {...newState.battle};
-            battle.against.currentHealth -= action.hit.damage;
-            battle.against.actions = [action.hit, ...battle.against.actions];
-            return {...newState, battle};
+            return {
+                ...newState, 
+                battle: {
+                    ...newState.battle,
+                    against: {
+                       ...newState.battle.against,
+                       actions: [action.hit, ...newState.battle.against.actions]
+                    },
+                    player: {
+                        ...newState.battle.player,
+                        currentHealth: newState.battle.player.currentHealth - action.hit.damage
+                    }
+                }
+            };
         case 'START_ATTACKS':
             return {
                 ...newState, 

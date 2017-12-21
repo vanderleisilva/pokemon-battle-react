@@ -19,9 +19,21 @@ class Player extends React.Component {
       On attack! <i className="fa fa-bolt" aria-hidden="true"></i>
     </div>) : false; 
 
+    let condition = (() => {
+      if (this.props.isCpu==undefined) { return { style: 'thumbnail with-hover' } }
+
+      let percentage = ((100*this.props.player.currentHealth)/this.props.player.health);
+
+      if (percentage < 26) {  return { style: 'thumbnail danger', title: this.props.player.name + ' is about to die'  } }
+
+      if (percentage < 51) {  return { style: 'thumbnail warning', title: this.props.player.name + ' doesn`t have too much health left'  } }
+
+      return { style: 'thumbnail', title: this.props.player.name + ' is in a good condition'  }   
+    })();
+
 		return (
     <div>
-       <div className={this.props.isCpu==undefined ? 'thumbnail with-hover' : 'thumbnail'}>
+       <div className={condition.style} title={condition.title}>
           <div className="title">
              {attacking}
              <h3>{this.props.player.name}</h3>
