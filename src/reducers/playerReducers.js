@@ -19,12 +19,12 @@ const playerReducers = (state=initialState, action) => {
         case 'PLAYER_HIT':
             battle = {...newState.battle};
             battle.player.currentHealth -= action.hit.damage;
-            battle.player.actions.push(action.hit);
+            battle.player.actions = [action.hit, ...battle.player.actions];
             return {...newState, battle};
         case 'CPU_HIT':
             battle = {...newState.battle};
             battle.against.currentHealth -= action.hit.damage;
-            battle.against.actions.push(action.hit);
+            battle.against.actions = [action.hit, ...battle.against.actions];
             return {...newState, battle};
         case 'START_ATTACKS':
             return {
@@ -39,7 +39,7 @@ const playerReducers = (state=initialState, action) => {
                 ...newState, 
                 battle: {
                     ...newState.battle,
-                    onAttack: true
+                    onAttack: false
                 }
             };
         default: 

@@ -5,17 +5,25 @@ import {baseURL} from 'constants/api';
 import Attacks from 'components/attacks';
 import Life from 'components/life';
 import Actions from 'components/actions';
+import {connect} from 'react-redux';
 
 import './player.css';
+
+const mapStateToProps = (state) => ({ onAttack: state.battle.onAttack });
 
 class Player extends React.Component { 
 
 	render() {
 
+    let attacking = this.props.onAttack ? (<div className="attacking bg-danger" title={this.props.player.name + ' is attacking'}>
+      On attack! <i className="fa fa-bolt" aria-hidden="true"></i>
+    </div>) : false; 
+
 		return (
     <div>
-       <div className="thumbnail">
+       <div className={this.props.isCpu==undefined ? 'thumbnail with-hover' : 'thumbnail'}>
           <div className="title">
+             {attacking}
              <h3>{this.props.player.name}</h3>
              <Life isCpu={this.props.isCpu} />
              <p>
@@ -27,7 +35,7 @@ class Player extends React.Component {
           <div className="container-image">
              <img src={baseURL+this.props.player.avatar} alt="player avatar" />
           </div>
-          <Attacks isCpu={this.props.isCpu} />
+          <Attacks isCpu={this.props.isCpu} attacks={this.props.isCpu == undefined ? this.props.player.attacks : false} />
        </div>
        <Actions isCpu={this.props.isCpu} />
     </div>);
@@ -36,7 +44,7 @@ class Player extends React.Component {
 
 Player.propTypes = {
   player: playerType.isRequired,
-  isCpu: PropTypes.bool.isRequired,
+  isCpu: PropTypes.bool,
 };
 
-export default Player;
+export default connect(mapStateToProps)(Player);

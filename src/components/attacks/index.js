@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {request} from 'constants/api';
+import {attackType} from 'constants/custom-prop-types';
 import {playerHit, cpuHit, startAttacks, endAttacks} from 'actions/playerActions'
 import './attacks.css';
 
@@ -30,6 +31,7 @@ class Attacks extends React.Component {
 
 			let player = response.data.player;
 			delete player.name;
+			player.attack = attack.name;
 			this.props.dispatch(playerHit(player));
 
 			setTimeout(() => {
@@ -37,14 +39,14 @@ class Attacks extends React.Component {
 				delete against.name;
 				this.props.dispatch(cpuHit(against));
 				this.props.dispatch(endAttacks());
-			}, 5000)
+			}, 2000)
 		});	
 	}
 
 	render() {
 		let battle = this.props.battle;
-		let items = this.props.isCpu ? battle.against.attacks : battle.player.attacks;
-		let enabled = !this.props.isCpu && battle.started;
+		let items = this.props.attacks ? this.props.attacks : (this.props.isCpu ? battle.against.attacks : battle.player.attacks);
+		let enabled = this.props.isCpu !== true && battle.started && !battle.onAttack;
 
 	    const attacks = !items ? [] : items.map((attack, index) => (
 	      <li 
@@ -66,7 +68,8 @@ class Attacks extends React.Component {
 }
 
 Attacks.propTypes = {
-  isCpu: PropTypes.bool.isRequired
+  isCpu: PropTypes.bool,
+  attacks: PropTypes.arrayOf(attackType)
 };
 
 export default connect(mapStateToProps)(Attacks);

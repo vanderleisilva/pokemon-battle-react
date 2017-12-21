@@ -1,3 +1,11 @@
+.thumbnail{ position: relative; }
+.attacking{
+	position: absolute;
+	right: 12px;
+	top: 4px;
+	padding: 4px;
+    border-radius: 4px;
+}
 .list-group-item{
 	padding: 3px 7px;
 	font-size: 0.9em;
@@ -19,7 +27,7 @@ img{
 .title{
 	padding:0 9px; 
 }
-.thumbnail:hover{
+.thumbnail.with-hover:hover{
 	border-color: #bce8f1; 
 	background-color: #d9edf7;
 }

@@ -7,6 +7,8 @@ const mapStateToProps = (state) => ({ battle: state.battle });
 class Life extends React.Component { 
 
 	render() {
+		if (this.props.isCpu == undefined) { return false; }
+		
 		let battle = this.props.battle;
 
 		if (!battle.started) { return false; }
@@ -32,7 +34,7 @@ class Life extends React.Component {
 }
 
 Life.propTypes = {
-  isCpu: PropTypes.bool.isRequired
+  isCpu: PropTypes.bool
 };
 
 export default connect(mapStateToProps)(Life);
