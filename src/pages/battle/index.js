@@ -1,6 +1,7 @@
 import React from "react";
 import Header from 'components/header'
 import PlayerFight from 'components/playerFight'
+import EndFight from 'components/endFight'
 import {request} from 'constants/api';
 import {connect} from 'react-redux';
 import {battle} from 'actions/playerActions'
@@ -22,14 +23,14 @@ class Battle extends React.Component {
   	}
 
 	render() {
-		const player = this.props.battle.player ? this.props.battle.player.name : ''; 
-		const against = this.props.battle.against ? this.props.battle.against.name : ''; 
+		const player = this.props.battle.player; 
+		const against = this.props.battle.against;
+		let status = player.currentHealth < 0 || against.currentHealth < 0;
+
 		return(
 			<div>
-				<Header>
-					<small>{player}</small> X <small>{against}</small>
-				</Header>
-				<PlayerFight />
+				{status ? <Header>{'End of battle'}</Header> : <Header><small>{player.name}</small> X <small>{against.name}</small></Header>}
+				{status ? <EndFight /> : <PlayerFight />}
 	        </div>
 		);
 	}
