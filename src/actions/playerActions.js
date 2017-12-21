@@ -7,3 +7,7 @@ export const addPlayer = (player) => ({ type: "ADD_PLAYER", player })
 export const playerHit = (hit) => ({ type: "PLAYER_HIT", hit })
 
 export const cpuHit = (hit) => ({ type: "CPU_HIT", hit })
+
+export const startAttacks = () => ({ type: "START_ATTACKS" })
+
+export const endAttacks = () => ({ type: "END_ATTACKS" })

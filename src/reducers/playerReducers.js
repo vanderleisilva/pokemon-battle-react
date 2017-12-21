@@ -1,28 +1,49 @@
-const initialBattle = { player: null, against: null, started: false };
-const initialState = { players: [], battle: initialBattle }
+const initialBattle = { player: { actions: [] }, against: { actions: [] }};
+const initialState = { players: [], battle: initialBattle}
 
 const playerReducers = (state=initialState, action) => {
+    let newState = {...state}, battle;  
+
     switch (action.type){
         case 'BATTLE_START': 
-            let status = {currentHealth: 0, actions: [], currentHealth: 0}
-        	
-            let battle = action.battle;
-            
-            battle.player = {...battle.player, status};
-            battle.against = {...battle.against, status};
-            
-            return {...state, battle}
+            battle = action.battle;
+            battle.player = {...battle.player, currentHealth: battle.player.health, actions: []};
+            battle.against = {...battle.against, currentHealth: battle.against.health, actions: []};
+            battle.started = true;
+            return {...newState, battle}
         case 'BATTLE_END': 
-            return {...state, battle: initialBattle}
+            return {...newState, battle: initialBattle}
         case 'ADD_PLAYER':
         	let players = state.players.concat(action.player);
-            return {...state, players} 
+            return {...newState, players} 
         case 'PLAYER_HIT':
-            return {...state}
+            battle = {...newState.battle};
+            battle.player.currentHealth -= action.hit.damage;
+            battle.player.actions.push(action.hit);
+            return {...newState, battle};
         case 'CPU_HIT':
-            return {...state}
+            battle = {...newState.battle};
+            battle.against.currentHealth -= action.hit.damage;
+            battle.against.actions.push(action.hit);
+            return {...newState, battle};
+        case 'START_ATTACKS':
+            return {
+                ...newState, 
+                battle: {
+                    ...newState.battle,
+                    onAttack: true
+                }
+            };
+        case 'END_ATTACKS':
+            return {
+                ...newState, 
+                battle: {
+                    ...newState.battle,
+                    onAttack: true
+                }
+            };
         default: 
-        	return {...state}
+        	return newState;
 
     }
 }

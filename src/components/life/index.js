@@ -11,8 +11,9 @@ class Life extends React.Component {
 
 		if (!battle.started) { return false; }
 
-		let current = this.props.isCpu ? battle.against.status.currentHealth : battle.player.status.currentHealth; 
+		let current = this.props.isCpu ? battle.against.currentHealth : battle.player.currentHealth; 
 		let total = this.props.isCpu ? battle.against.health : battle.player.health; 
+		let percentage = ((100*current)/total).toFixed(0);
 
 	    return(
 	    	<div title="Life" className="progress">
@@ -22,8 +23,8 @@ class Life extends React.Component {
 			  	aria-valuenow={current} 
 			  	aria-valuemin="0" 
 			  	aria-valuemax={total} 
-			  	style={{ width: current + '%' }}>
-			    {current}%
+			  	style={{ width: percentage + '%' }}>
+			    {percentage}%
 			  </div>
 			</div>
 	    )
