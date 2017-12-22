@@ -2,6 +2,7 @@ import React from "react";
 import Header from 'components/header'
 import PlayerFight from 'components/playerFight'
 import EndFight from 'components/endFight'
+import ApiChange from 'components/apiChange'
 import {request} from 'constants/api';
 import {connect} from 'react-redux';
 import {battle} from 'actions/playerActions'
@@ -29,7 +30,12 @@ class Battle extends React.Component {
 
 		return(
 			<div>
-				{status ? <Header><small>{'End of battle'}</small></Header> : <Header><small>{player.name}</small> X <small>{against.name}</small></Header>}
+				{status ? 
+					<Header><small>{'End of battle'}</small><ApiChange/></Header> 
+				: 
+					<Header><small>{player.name}</small> X <small>{against.name}</small><ApiChange/></Header>
+				}
+
 				{status ? <EndFight /> : <PlayerFight />}
 	        </div>
 		);

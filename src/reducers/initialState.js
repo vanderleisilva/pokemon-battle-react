@@ -9,7 +9,12 @@ export const initialBattle = {
 
 const initialState = { 
 	players: [], 
-	battle: initialBattle
+	battle: initialBattle,
+	api: {
+		url: 'https://vanderleisilva.github.io/pokemon-battle/backend-api.json',
+		selected: undefined,
+		engines: []
+	}
 }
 
 export default initialState;

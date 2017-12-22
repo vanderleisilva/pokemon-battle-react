@@ -7,6 +7,8 @@ import playerHit from './slice/playerHit';
 import cpuHit from './slice/cpuHit';
 import startAttacks from './slice/startAttacks';
 import endAttacks from './slice/endAttacks';
+import loadApi from './slice/loadApi';
+import changeApi from './slice/changeApi';
 
 function createReducer(initialState, handlers) {
   	return (state = initialState, action) => handlers.hasOwnProperty(action.type) ? handlers[action.type](state, action) : state
@@ -20,4 +22,6 @@ export default createReducer(initialState, {
     'CPU_HIT' : cpuHit,
     'START_ATTACKS' : startAttacks,
     'END_ATTACKS' : endAttacks,
+    'LOAD_API' : loadApi,
+    'CHANGE_API' : changeApi
 });

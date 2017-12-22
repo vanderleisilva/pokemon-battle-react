@@ -1,8 +1,7 @@
 import React from "react";
-import PlayerList from '../../components/playerList'
-import Header from '../../components/header';
-import {endBattle} from '../../actions/playerActions'
-
+import PlayerList from 'components/playerList'
+import Header from 'components/header';
+import {endBattle} from 'actions/playerActions';
 import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => ({ started: state.battle.started });

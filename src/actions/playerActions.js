@@ -11,3 +11,7 @@ export const cpuHit = (hit) => ({ type: "CPU_HIT", hit })
 export const startAttacks = () => ({ type: "START_ATTACKS" })
 
 export const endAttacks = () => ({ type: "END_ATTACKS" })
+
+export const loadApi = (api) => ({ type: "LOAD_API", api })
+
+export const changeApi = (api) => ({ type: "CHANGE_API", api })
