@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {request} from 'constants/api';
+import axios from 'axios';
 import {attackType} from 'constants/custom-prop-types';
 import {playerHit, cpuHit, startAttacks, endAttacks} from 'actions/playerActions'
 import './attacks.css';
 
-const mapStateToProps = (state) => ({ battle: state.battle });
+const mapStateToProps = (state) => ({ battle: state.battle, url: state.api.selected.url });
 
 class Attacks extends React.Component { 
 
@@ -27,7 +27,7 @@ class Attacks extends React.Component {
 		    }
 		}
 
-		request.post('hit', param).then(response => {
+		axios.post(`${this.props.url}/hit`, param).then(response => {
 
 			let player = response.data.player;
 			delete player.name;

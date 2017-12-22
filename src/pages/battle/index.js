@@ -3,19 +3,20 @@ import Header from 'components/header'
 import PlayerFight from 'components/playerFight'
 import EndFight from 'components/endFight'
 import ApiChange from 'components/apiChange'
-import {request} from 'constants/api';
+import axios from 'axios';
 import {connect} from 'react-redux';
 import {battle} from 'actions/playerActions'
 
 const mapStateToProps = (state, ownProps) => ({ 
 	battle: state.battle, 
+	url: state.api.selected.url,
 	selected: ownProps.match.params 
 });
 
 class Battle extends React.Component {
 
 	componentDidMount() {
-		request.post('select', this.props.selected).then(response => { 
+		axios.post(`${this.props.url}/select`, this.props.selected).then(response => { 
 			this.props.dispatch(battle({ 
 				player: response.data.player, 
 				against: response.data.against 

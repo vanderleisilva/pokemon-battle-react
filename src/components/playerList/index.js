@@ -2,17 +2,17 @@ import React from "react";
 import Player from 'components/player';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-import {request} from 'constants/api';
+import axios from 'axios';
 import {addPlayer} from 'actions/playerActions'
 
-const mapStateToProps = (state) => ({ players: state.players });
+const mapStateToProps = (state) => ({ players: state.players, url: state.api.selected.url });
 
 class PlayerList extends React.Component {
 
 	componentDidMount() {
 		if (this.props.players.length > 0) { return; }
 		
-		request.get('all').then(response => response.data.forEach(i => this.props.dispatch(addPlayer(i))))
+		axios.get(`${this.props.url}/all`).then(response => response.data.forEach(i => this.props.dispatch(addPlayer(i))))
   	}
 
 	render() {

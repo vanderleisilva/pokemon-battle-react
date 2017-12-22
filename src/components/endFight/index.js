@@ -1,9 +1,8 @@
 import React from "react";
 import {connect} from 'react-redux';
 import { Link } from 'react-router-dom';
-import {baseURL} from 'constants/api';
 
-const mapStateToProps = (state) => ({ battle: state.battle });
+const mapStateToProps = (state) => ({ battle: state.battle, url: state.api.selected.url  });
 
 class EndBattle extends React.Component {
 
@@ -39,7 +38,7 @@ class EndBattle extends React.Component {
 					</h1>
 					<div className="row">
 						<div className="col-md-3">
-							<img className="pull-left" src={baseURL+info.avatar} alt={info.winner} /> 
+							<img className="pull-left" src={this.props.url+info.avatar} alt={info.winner} /> 
 						</div>
 						<div className="col-md-9 padding-top">
 							<p><b>{info.winner}</b> is the winner!!! <b>{info.loser}</b> had no chances and was destroyed!</p>

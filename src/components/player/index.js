@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {playerType} from 'constants/custom-prop-types';
-import {baseURL} from 'constants/api';
 import Attacks from 'components/attacks';
 import Life from 'components/life';
 import Actions from 'components/actions';
@@ -9,7 +8,7 @@ import {connect} from 'react-redux';
 
 import './player.css';
 
-const mapStateToProps = (state) => ({ onAttack: state.battle.onAttack });
+const mapStateToProps = (state) => ({ onAttack: state.battle.onAttack, url: state.api.selected.url });
 
 class Player extends React.Component { 
 
@@ -45,7 +44,7 @@ class Player extends React.Component {
              </p>
           </div>
           <div className="container-image">
-             <img src={baseURL+this.props.player.avatar} alt="player avatar" />
+             <img src={this.props.url+this.props.player.avatar} alt="player avatar" />
           </div>
           <Attacks isCpu={this.props.isCpu} attacks={this.props.isCpu === undefined ? this.props.player.attacks : undefined} />
        </div>
