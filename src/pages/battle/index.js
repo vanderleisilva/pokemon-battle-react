@@ -25,11 +25,11 @@ class Battle extends React.Component {
 	render() {
 		const player = this.props.battle.player; 
 		const against = this.props.battle.against;
-		let status = player.currentHealth < 0 || against.currentHealth < 0;
+		let status = player.currentHealth <= 0 || against.currentHealth <= 0;
 
 		return(
 			<div>
-				{status ? <Header>{'End of battle'}</Header> : <Header><small>{player.name}</small> X <small>{against.name}</small></Header>}
+				{status ? <Header><small>{'End of battle'}</small></Header> : <Header><small>{player.name}</small> X <small>{against.name}</small></Header>}
 				{status ? <EndFight /> : <PlayerFight />}
 	        </div>
 		);

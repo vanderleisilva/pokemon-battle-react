@@ -1,26 +1,26 @@
 import PropTypes from 'prop-types';
 
 export const attackType = PropTypes.shape({
-	name: PropTypes.string.isRequired,
-	power: PropTypes.number.isRequired,
-	type: PropTypes.string.isRequired,
-	accuracy: PropTypes.number.isRequired,
+	name: PropTypes.string,
+	power: PropTypes.number,
+	type: PropTypes.string,
+	accuracy: PropTypes.number,
 });
 
 export const playerType = PropTypes.shape({
-	name: PropTypes.string.isRequired,
-	type: PropTypes.string.isRequired,
-	avatar: PropTypes.string.isRequired,
-	health: PropTypes.number.isRequired,
-	agility: PropTypes.number.isRequired,
-	attack: PropTypes.number.isRequired,
-	defense: PropTypes.number.isRequired,
-	attacks: PropTypes.arrayOf(attackType).isRequired
+	name: PropTypes.string,
+	type: PropTypes.string,
+	avatar: PropTypes.string,
+	health: PropTypes.number,
+	agility: PropTypes.number,
+	attack: PropTypes.number,
+	defense: PropTypes.number,
+	attacks: PropTypes.arrayOf(attackType)
 });
 
 export const actionType = PropTypes.shape({
-	attack: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-	damage: PropTypes.number.isRequired,
+	attack: PropTypes.string,
+	name: PropTypes.string,
+	damage: PropTypes.number,
 	desc: PropTypes.string
 });

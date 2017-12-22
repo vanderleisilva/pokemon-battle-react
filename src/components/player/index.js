@@ -20,7 +20,7 @@ class Player extends React.Component {
     </div>) : false; 
 
     let condition = (() => {
-      if (this.props.isCpu==undefined) { return { style: 'thumbnail with-hover' } }
+      if (this.props.isCpu===undefined) { return { style: 'thumbnail with-hover' } }
 
       let percentage = ((100*this.props.player.currentHealth)/this.props.player.health);
 
@@ -47,7 +47,7 @@ class Player extends React.Component {
           <div className="container-image">
              <img src={baseURL+this.props.player.avatar} alt="player avatar" />
           </div>
-          <Attacks isCpu={this.props.isCpu} attacks={this.props.isCpu == undefined ? this.props.player.attacks : false} />
+          <Attacks isCpu={this.props.isCpu} attacks={this.props.isCpu === undefined ? this.props.player.attacks : undefined} />
        </div>
        <Actions isCpu={this.props.isCpu} />
     </div>);
