@@ -1,0 +1,9 @@
+export const BATTLE_START = 'BATTLE_START';
+export const BATTLE_END = 'BATTLE_END';
+export const ADD_PLAYER = 'ADD_PLAYER';
+export const PLAYER_HIT = 'PLAYER_HIT';
+export const CPU_HIT = 'CPU_HIT';
+export const START_ATTACKS = 'START_ATTACKS';
+export const END_ATTACKS = 'END_ATTACKS';
+export const LOAD_API = 'LOAD_API';
+export const CHANGE_API = 'CHANGE_API';

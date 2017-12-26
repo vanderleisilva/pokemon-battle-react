@@ -1,17 +1,19 @@
-export const battle = (battle) => ({ type: "BATTLE_START", battle })
+import * as types from 'constants/ActionTypes';
 
-export const endBattle = () => ({ type: "BATTLE_END" })
+export const battle = (battle) => ({ type: types.BATTLE_START, battle })
 
-export const addPlayer = (player) => ({ type: "ADD_PLAYER", player })
+export const endBattle = () => ({ type: types.BATTLE_END })
 
-export const playerHit = (hit) => ({ type: "PLAYER_HIT", hit })
+export const addPlayer = (player) => ({ type: types.ADD_PLAYER, player })
 
-export const cpuHit = (hit) => ({ type: "CPU_HIT", hit })
+export const playerHit = (hit) => ({ type: types.PLAYER_HIT, hit })
 
-export const startAttacks = () => ({ type: "START_ATTACKS" })
+export const cpuHit = (hit) => ({ type: types.CPU_HIT, hit })
 
-export const endAttacks = () => ({ type: "END_ATTACKS" })
+export const startAttacks = () => ({ type: types.START_ATTACKS })
 
-export const loadApi = (api) => ({ type: "LOAD_API", api })
+export const endAttacks = () => ({ type: types.END_ATTACKS })
 
-export const changeApi = (api) => ({ type: "CHANGE_API", api })
+export const loadApi = (api) => ({ type: types.LOAD_API, api })
+
+export const changeApi = (api) => ({ type: types.CHANGE_API, api })
