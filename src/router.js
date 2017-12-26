@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import localForage from "localforage";
 import axios from 'axios';
 import {loadApi} from 'actions/playerActions';
+import { BrowserRouter } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({ api: state.api });
 
@@ -31,10 +32,12 @@ class Router extends Component {
       <div>
         {
           this.props.api.selected ? 
-            <Switch>
-              <Route exact path='/' component={selection}/>
-              <Route path='/battle/:name' component={battle}/>
-            </Switch> 
+            <BrowserRouter>
+              <Switch>
+                <Route exact path='/' component={selection}/>
+                <Route path='/battle/:name' component={battle}/>
+              </Switch> 
+            </BrowserRouter>
           : 
             <div style={{padding: '10px'}}>Carregando dados ...</div>
         }

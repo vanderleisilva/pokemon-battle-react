@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
 
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
@@ -14,7 +13,6 @@ import './index.css';
 import Router from './router';
 import registerServiceWorker from './registerServiceWorker';
 
-
 const store = createStore(
 	playerReducer,/* preloadedState, */
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -23,9 +21,7 @@ const store = createStore(
 
 ReactDOM.render((
 	<Provider store={store}>
-		<BrowserRouter>
-	    	<Router />
-	  	</BrowserRouter>
+    	<Router />
   	</Provider>
 ), document.getElementById('root'));
 registerServiceWorker();
